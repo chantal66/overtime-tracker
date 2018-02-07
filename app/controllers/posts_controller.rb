@@ -13,12 +13,11 @@ class PostsController < ApplicationController
   end
 
   def create
-    # binding.pry
     @post = Post.new(post_params)
     if @post.save
-      redirect_to @post
+      redirect_to @post, notice: 'Your post was created successfully'
     else
-      :new
+      render :new
     end
   end
 
