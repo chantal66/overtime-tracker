@@ -1,9 +1,36 @@
 class PostsController < ApplicationController
-  def index
 
+  before_action :set_post, only: [:show]
+
+  def index
   end
 
   def new
-    
+    @post = Post.new
+  end
+
+  def show
+  end
+
+  def create
+    # binding.pry
+    @post = Post.new(post_params)
+    if @post.save
+      redirect_to @post
+    else
+      :new
+    end
+  end
+
+  private
+
+  def post_params
+    params.require(:post).permit(:date, :rationale)
+  end
+
+  def set_post
+    @post = Post.find(params[:id])
   end
 end
+
+
