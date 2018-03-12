@@ -14,7 +14,7 @@ describe 'navigate' do
   end
 
   describe 'creation' do
-    before  do
+    before do
       user = User.create!(email: 'test@test.com', password: 'asdfghij', password_confirmation: 'asdfghij',
                            first_name: 'Harry', last_name: 'Potter')
       login_as(user, :scope => :user)
