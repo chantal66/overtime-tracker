@@ -9,16 +9,14 @@ describe 'navigate' do
 
   describe 'index' do
     before do
-      # visit posts_path
+      visit posts_path
     end
 
-    it 'can be reached succesfully' do
-      visit posts_path
+    it 'can be reached successfully' do
       expect(page.status_code).to eq(200)
     end
 
     it 'has a title of posts' do
-      visit posts_path
       expect(page).to have_content(/Posts/)
     end
 
