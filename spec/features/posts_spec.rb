@@ -5,10 +5,13 @@ describe 'navigate' do
     user = User.create!(email: 'test@test.com', password: 'asdfghij', password_confirmation: 'asdfghij',
                         first_name: 'Harry', last_name: 'Potter')
     login_as(user, :scope => :user)
-    visit new_post_path
   end
 
   describe 'index' do
+    before do
+      # visit posts_path
+    end
+
     it 'can be reached succesfully' do
       visit posts_path
       expect(page.status_code).to eq(200)
@@ -20,10 +23,10 @@ describe 'navigate' do
     end
 
     it 'has a list of posts' do
-      post1 = Post.create!(date: Date.today, rationale: 'Something cool here for post 1')
-      post2 = Post.create!(date: Date.today, rationale: 'Something cool here for post 2')
+      post1 = Post.create(date: Date.today, rationale: 'Post1')
+      post2 = Post.create(date: Date.today, rationale: 'Post2')
       visit posts_path
-      expect(page).to have_content(/Something cool here for post 1 | Something cool here for post 2/)
+      expect(page).to have_content(/Post1|Post2/)
     end
   end
 
