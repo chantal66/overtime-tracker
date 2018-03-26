@@ -1,9 +1,9 @@
 require 'rails_helper'
 
+
 describe 'navigate' do
   before do
-    user = User.create!(email: 'test@test.com', password: 'asdfghij', password_confirmation: 'asdfghij',
-                        first_name: 'Harry', last_name: 'Potter')
+    user = User.create(email: "test@test.com", password: "asdfasdf", password_confirmation: "asdfasdf", first_name: "Jon", last_name: "Snow")
     login_as(user, :scope => :user)
   end
 
@@ -16,15 +16,16 @@ describe 'navigate' do
       expect(page.status_code).to eq(200)
     end
 
-    it 'has a title of posts' do
+    it 'has a title of Posts' do
       expect(page).to have_content(/Posts/)
     end
 
     it 'has a list of posts' do
-      post1 = Post.create(date: Date.today, rationale: 'Post1')
-      post2 = Post.create(date: Date.today, rationale: 'Post2')
+      post1 = Post.create!(date: Date.today, rationale: "Post1")
+      post2 = Post.create!(date: Date.today, rationale: "Post2")
       visit posts_path
-      expect(page).to have_content(/Post1|Post2/)
+      expect(page).to have_content(post1.rationale)
+      expect(page).to have_content(post2.rationale)
     end
   end
 
