@@ -17,6 +17,6 @@ This will be a tool for fake company an it will document if an employee did or d
 >* Devise
 
 ## Todos
->* Add a full name method
+
 
  
