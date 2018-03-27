@@ -6,7 +6,7 @@ RSpec.describe Post, type: :model do
     before do
       @user = FactoryGirl.create(:user)
       login_as(@user, :scope => :user)
-      @post = Post.create(date: Date.today, rationale: "Anything", user_id: @user.id)
+      @post = FactoryGirl.create(:post)
     end
 
     it 'can be created' do
