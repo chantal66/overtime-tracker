@@ -55,11 +55,11 @@ describe 'navigate' do
   end
 
   describe 'edit' do
-    it 'clicks edit on index page' do
+    it 'can be reached by clicking edit on index page' do
       post = FactoryGirl.create(:post)
       visit posts_path
 
-      click_link 'edit'
+      click_link("edit_#{post.id}")
 
       expect(page.status_code).to eq(200)
     end
