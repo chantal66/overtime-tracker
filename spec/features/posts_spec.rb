@@ -1,6 +1,5 @@
 require 'rails_helper'
 
-
 describe 'navigate' do
   before do
     @user = FactoryGirl.create(:user)
@@ -24,6 +23,7 @@ describe 'navigate' do
       post1 = FactoryGirl.build_stubbed(:post)
       post2 = FactoryGirl.build_stubbed(:second_post)
       visit posts_path
+
       expect(page).to have_content(/Rationale|content/)
     end
   end
@@ -55,15 +55,28 @@ describe 'navigate' do
   end
 
   describe 'edit' do
-    it 'can be reached by clicking edit on index page' do
-      post = FactoryGirl.create(:post)
-      visit posts_path
+    before do
+      @post = FactoryGirl.create(:post)
+    end
 
-      click_link("edit_#{post.id}")
+    it 'can be reached by clicking edit on index page' do
+      visit posts_path
+      click_link("edit_#{@post.id}")
 
       expect(page.status_code).to eq(200)
     end
+
+    it "can be edited" do
+      visit edit_post_path(@post)
+
+      fill_in 'post[date]', with: Date.today
+      fill_in 'post[rationale]', with: 'content has been edited'
+      click_on 'Save'
+
+      expect(page).to have_content('content has been edited')
+    end
   end
+
 end
 
 # TODO refactor user association integration
