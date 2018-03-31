@@ -3,7 +3,7 @@
 This will be a tool for fake company an it will document if an employee did or did not get overtime
 
 ## Features 
-
+>* Only authorized users are available to use the app. (No Sign up)
 >* Approval workflow
 >* SMS with link to aprove or not the overtime requested 
 >* Admin dashboard
