@@ -26,6 +26,14 @@ describe 'navigate' do
 
       expect(page).to have_content(/Rationale|content/)
     end
+
+    it 'has a scope so that only post creators can see their posts' do
+      post1 = FactoryGirl.build_stubbed(:post)
+      post2 = FactoryGirl.build_stubbed(:second_post)
+      non_authorized_user = User.create(first_name: 'Non', last_name: 'Authorized',
+       email: 'non_authorized_user@email.com', password: 'asdfasdf', password_confirmation: 'asdfasdf')
+      post_from_other_user = Post.create(date: Date.today, rationale: 'asdfasdf', user_id: non_authorized_user.id)
+    end
   end
 
   describe 'new' do
