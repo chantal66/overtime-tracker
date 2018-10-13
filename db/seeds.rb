@@ -12,3 +12,4 @@ puts '1 Admin User created'
   Post.create(date: Date.today, rationale: "#{post} rationale content", user_id: @user.id)
 end
 
+puts '100 posts created'

@@ -15,7 +15,7 @@ gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 
-gem 'devise'
+gem 'devise', git: 'https://github.com/plataformatec/devise'
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
 gem 'gritter', '~> 1.2'
 gem 'administrate', '~> 0.9.0'
