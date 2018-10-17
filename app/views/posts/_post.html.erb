@@ -1,23 +1,23 @@
-    <tr>
-      <td>
-        <%= post.id %>
-      </td>
-      <td>
-        <%= post.date %>
-      </td>
-      <td>
-        <%= post.user.full_name%>
-      </td>
-      <td>
-        <%= truncate(post.rationale) %>
-      </td>
-      <td>
-       <span class='label label-primary' ><%= post.status %></span>
-      </td>
-      <td>
-        <%= link_to 'Edit', edit_post_path(post), id: "edit_#{post.id}" %>
-      </td>
-      <td>
-        <%= link_to 'Delete', post_path(post), method: :delete, id: "delete_post_#{post.id}_from_index" %>
-      </td>
-    </tr>
+  <tr>
+    <td>
+      <%= post.id %>
+    </td>
+    <td>
+      <%= post.date %>
+    </td>
+    <td>
+      <%= post.user.full_name%>
+    </td>
+    <td>
+      <%= truncate(post.rationale) %>
+    </td>
+    <td>
+      <%= status_label post.status %>
+    </td>
+    <td>
+      <%= link_to 'Edit', edit_post_path(post), id: "edit_#{post.id}" if policy(post).update? %>
+    </td>
+    <td>
+      <%= link_to 'Delete', post_path(post), method: :delete, id: "delete_post_#{post.id}_from_index" %>
+    </td>
+  </tr>
