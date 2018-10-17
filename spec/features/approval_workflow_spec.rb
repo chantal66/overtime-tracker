@@ -21,12 +21,25 @@ describe 'navigate' do
 
     it 'cannot be edited by a regular user' do
       logout(:user)
-      @user = FactoryGirl.create(:user)
-      login_as(@user, :scope => :user)
+      user = FactoryGirl.create(:user)
+      login_as(user, :scope => :user)
 
       visit edit_post_path(@post)
 
       expect(page).to_not have_content('Approved')
     end
+
+    it 'shoudl not be editable by the post creator if status is approved' do
+      logout(:user)
+      user = FactoryGirl.create(:user)
+      login_as(user, :scope => :user)
+
+      @post.update(user_id: user.id, status: 'approved')
+
+      visit edit_post_path(@post)
+
+      expect(current_path).to eq(root_path)
+    end
+
   end
 end
