@@ -116,7 +116,5 @@ describe 'navigate' do
 
 end
 
-# TODO refactor user association integration
-# TODO fix post_spec.rb:68 to use factories
 
 
