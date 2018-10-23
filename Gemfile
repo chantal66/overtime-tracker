@@ -31,6 +31,7 @@ group :development, :test do
   gem 'launchy'
   gem 'pry'
   gem 'rspec-rails'
+  gem 'dotenv-rails'
 end
 
 group :development do
