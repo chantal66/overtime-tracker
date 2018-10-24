@@ -13,6 +13,7 @@ class AdminUserDashboard < Administrate::BaseDashboard
       last_sign_in_ip: Field::String.with_options(searchable: false),
       first_name: Field::String.with_options(searchable: false),
       last_name: Field::String.with_options(searchable: false),
+      phone: Field::String.with_options(searchable: false),
       created_at: Field::DateTime.with_options(searchable: false),
       updated_at: Field::DateTime.with_options(searchable: false),
       type: Field::String.with_options(searchable: false),
@@ -22,6 +23,7 @@ class AdminUserDashboard < Administrate::BaseDashboard
       :posts,
       :id,
       :email,
+      :phone
   ].freeze
 
   SHOW_PAGE_ATTRIBUTES = [
@@ -35,6 +37,7 @@ class AdminUserDashboard < Administrate::BaseDashboard
       :last_sign_in_ip,
       :first_name,
       :last_name,
+      :phone,
       :created_at,
       :updated_at,
       :type,
@@ -45,6 +48,7 @@ class AdminUserDashboard < Administrate::BaseDashboard
       :password,
       :first_name,
       :last_name,
+      :phone,
       :type,
   ].freeze
 end
