@@ -1,6 +1,9 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
+  has_many :posts
+  has_many :audit_logs
+  
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   validates :first_name, :last_name, :phone, presence: true
@@ -10,7 +13,6 @@ class User < ApplicationRecord
   validates_format_of :phone, with: PHONE_REGEX
   validates :phone, length: { is: 10 }
 
-  has_many :posts
 
   def full_name
     last_name.upcase + ", " + first_name.upcase
