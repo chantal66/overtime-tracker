@@ -16,4 +16,8 @@ puts '1 Admin User created'
   Post.create(date: Date.today, rationale: "#{post} rationale content", user_id: @user.id, overtime_request: 2.5)
 end
 
-puts '100 posts created'
+100.times do |audit_log|
+  AuditLog.create!(start_date: (Date.today - 6.days) , user_id: User.last.id, status: 0)
+end
+
+puts '100 audit logs created'
